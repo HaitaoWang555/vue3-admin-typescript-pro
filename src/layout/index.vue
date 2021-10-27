@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Navbar, Sidebar, AppMain } from './components/index'
+import { Navbar, Sidebar, AppMain, Settings } from './components/index'
+import RightPanel from '@/components/RightPanel/index.vue'
 import { useResizeHandler } from './mixin/ResizeHandler'
 import { useStore } from 'vuex'
 
@@ -10,6 +11,7 @@ const store = useStore()
 const sidebar = computed(() => store.state.app.sidebar)
 const device = computed(() => store.state.app.device)
 const fixedHeader = computed(() => store.state.settings.fixedHeader)
+const showSettings = computed(() => store.state.settings.showSettings)
 
 const classObj = computed(() => {
   return {
@@ -39,6 +41,9 @@ const handleClickOutside = () => {
       </div>
       <app-main />
     </div>
+    <right-panel v-if="showSettings">
+      <Settings />
+    </right-panel>
   </div>
 </template>
 

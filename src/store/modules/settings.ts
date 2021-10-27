@@ -5,6 +5,7 @@ export interface ISettings {
   showSettings?: boolean
   fixedHeader?: boolean
   sidebarLogo?: boolean
+  tagsView?: boolean
 }
 export interface IData {
   key: 'showSettings' | 'fixedHeader' | 'sidebarLogo'
