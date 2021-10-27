@@ -10,6 +10,7 @@ import {
 // use components
 import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
 import Hamburger from '@/components/Hamburger/index.vue' // Hamburger component
+import ProDialog from '@/components/ProDialog/index.vue' // ProDialog component
 import { App } from 'vue'
 
 const plugins = [
@@ -29,4 +30,5 @@ export const loadPlugins = (app: App): void => {
 export const loadComponents = (app: App): void => {
   app.component('SvgIcon', SvgIcon)
   app.component('Hamburger', Hamburger)
+  app.component('ProDialog', ProDialog)
 }

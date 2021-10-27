@@ -10,7 +10,8 @@
     "lint:css": "stylelint --fix \"src/**/*.{css,sass,scss}\" --syntax scss",
     "lint:fix": "eslint --fix --cache --ext .vue,.js,.jsx,.ts,.tsx ./",
     "lint:style": "stylelint --fix \"src/**/*.vue\" --custom-syntax postcss-html",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
   },
   "dependencies": {
     "axios": "0.22.0",
@@ -59,7 +60,7 @@
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.21.0",
     "svg-sprite-loader": "^6.0.10",
-    "svgo": "^2.7.0",
+    "svgo": "^1.3.2",
     "typescript": "~4.1.5",
     "unplugin-vue-components": "^0.16.0",
     "vue-cli-plugin-windicss": "~1.0.5"

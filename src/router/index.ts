@@ -2,6 +2,11 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 import Layout from '@/layout/index.vue'
 
+/* Router Modules */
+import componentsPage from './modules/components-page'
+import errorRouter from './modules/error-page'
+import nestedRouter from './modules/nested'
+
 const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -51,18 +56,9 @@ const constantRoutes: RouteRecordRaw[] = [
       },
     ],
   },
-  {
-    path: '/tailwind',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Tailwind',
-        component: () => import('@/views/tailwind/index.vue'),
-        meta: { title: 'tailwind', icon: 'el-icon-magic-stick' },
-      },
-    ],
-  },
+  componentsPage,
+  errorRouter,
+  nestedRouter,
   {
     path: '/icons',
     component: Layout,
@@ -70,69 +66,9 @@ const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'index',
         name: 'IconsViews',
-        component: () => import('@/views/icons/index.vue'),
+        component: () =>
+          import(/* webpackChunkName: "icon" */ '@/views/icons/index.vue'),
         meta: { title: 'icons', icon: 'icon' },
-      },
-    ],
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested',
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index.vue'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1/index.vue'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' },
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2/index.vue'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-1/index.vue'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' },
-              },
-              {
-                path: 'menu1-2-2',
-                component: () =>
-                  import('@/views/nested/menu1/menu1-2/menu1-2-2/index.vue'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' },
-              },
-            ],
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3/index.vue'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' },
-          },
-        ],
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index.vue'),
-        name: 'Menu2',
-        meta: { title: 'menu2' },
       },
     ],
   },
@@ -150,15 +86,11 @@ const constantRoutes: RouteRecordRaw[] = [
   },
   {
     path: '/login',
-    component: () => import('@/views/login/index.vue'),
+    component: () =>
+      import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
     meta: { hidden: true },
   },
-  {
-    path: '/404',
-    component: () => import('@/views/404.vue'),
-    meta: { hidden: true },
-  },
-  { path: '/:pathMatch(.*)*', redirect: '/404', meta: { hidden: true } },
+  { path: '/:pathMatch(.*)*', redirect: '/error/404', meta: { hidden: true } },
 ]
 
 const history = createWebHashHistory()

@@ -1,5 +1,5 @@
 // components.d.ts
-import { THamburger, TSvgIcon } from '@/components/type'
+import { THamburger, TSvgIcon, TProDialog } from '@/components/type'
 declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -7,6 +7,7 @@ declare module 'vue' {
     component: (props: { is: Comment }) => void // https://github.com/johnsoncodehk/volar/issues/482
     SvgIcon: typeof TSvgIcon
     Hamburger: typeof THamburger
+    ProDialog: typeof TProDialog
   }
 }
 export {}

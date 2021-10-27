@@ -1,0 +1,33 @@
+/** When your routing table is too long, you can split it into small modules **/
+import { RouteRecordRaw } from 'vue-router'
+
+import Layout from '@/layout/index.vue'
+
+const errorRouter: RouteRecordRaw = {
+  path: '/error',
+  component: Layout,
+  redirect: 'noRedirect',
+  name: 'ErrorPages',
+  meta: {
+    title: 'Error Pages',
+    icon: '404',
+  },
+  children: [
+    {
+      path: '401',
+      component: () =>
+        import(/* webpackChunkName: "error" */ '@/views/error-page/401.vue'),
+      name: 'Page401',
+      meta: { title: '401', noCache: true },
+    },
+    {
+      path: '404',
+      component: () =>
+        import(/* webpackChunkName: "error" */ '@/views/error-page/404.vue'),
+      name: 'Page404',
+      meta: { title: '404', noCache: true },
+    },
+  ],
+}
+
+export default errorRouter
