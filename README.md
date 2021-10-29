@@ -1,4 +1,4 @@
-# vue3-admin-typescript
+# vue3-admin-typescript-pro
 
 ## Project setup
 ```
