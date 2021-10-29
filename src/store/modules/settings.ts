@@ -8,17 +8,18 @@ export interface ISettings {
   tagsView?: boolean
 }
 export interface IData {
-  key: 'showSettings' | 'fixedHeader' | 'sidebarLogo'
+  key: 'showSettings' | 'fixedHeader' | 'sidebarLogo' | 'tagsView'
   value: boolean
 }
 
-const { showSettings, fixedHeader, sidebarLogo } = defaultSettings
+const { showSettings, fixedHeader, sidebarLogo, tagsView } = defaultSettings
 
 const state = (): ISettings => {
   return {
     showSettings: showSettings,
     fixedHeader: fixedHeader,
     sidebarLogo: sidebarLogo,
+    tagsView: tagsView,
   }
 }
 

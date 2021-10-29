@@ -2,16 +2,29 @@ import { createApp, App } from 'vue'
 import ELApp from './App.vue'
 import { loadComponents, loadPlugins } from '@/core/use'
 import 'windi.css'
-import './styles/index.scss' // global css
-
-// icon
-import '@/icons'
+import './styles/index.scss'
 // vue router
 import router from '@/router'
 // vue vuex
 import store from '@/store'
 
-import '@/permission'
+import '@/permission' // global css
+
+// icon
+import(/* webpackChunkName: "icon" */ '@/icons/index')
+
+/**
+ * If you don't want to use mock-server
+ * you want to use MockJs for mock api
+ * you can execute: mockXHR()
+ *
+ * Currently MockJs will be used in the production environment,
+ * please remove it before going online ! ! !
+ */
+if (process.env.NODE_ENV === 'production') {
+  const { mockXHR } = require('../mock')
+  mockXHR()
+}
 
 const app: App = createApp(ELApp)
 

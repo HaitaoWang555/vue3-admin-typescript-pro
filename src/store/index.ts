@@ -1,16 +1,18 @@
 import { createStore } from 'vuex'
 
-import getters from './getters'
-import app, { IApp } from './modules/app'
-import settings, { ISettings } from './modules/settings'
-import user, { IUser } from './modules/user'
+import getters, { State } from './getters'
+import app from './modules/app'
+import settings from './modules/settings'
+import user from './modules/user'
+import tagsView from './modules/tagsView'
+import permission from './modules/permission'
 
-export type State = { app: IApp; user: IUser; settings: ISettings }
-
-const store = createStore({
+const store = createStore<State>({
   modules: {
     app,
     settings,
+    tagsView,
+    permission,
     user,
   },
   getters,

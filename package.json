@@ -71,7 +71,7 @@
     "not dead"
   ],
   "lint-staged": {
-    "**/*.{vue}": "npm run lint:style",
+    "**/*.vue": "npm run lint:style",
     "**/*.{css,sass,scss}": "npm run lint:css",
     "**/*.{vue,js,jsx,ts,tsx}": "npm run lint:fix"
   }

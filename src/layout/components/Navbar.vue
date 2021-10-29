@@ -91,6 +91,7 @@ const logout = async () => {
     float: right;
     height: 100%;
     line-height: 50px;
+    margin-right: 10px;
 
     &:focus {
       outline: none;

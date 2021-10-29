@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Navbar, Sidebar, AppMain, Settings } from './components/index'
+import {
+  Navbar,
+  Sidebar,
+  AppMain,
+  Settings,
+  TagsView,
+} from './components/index'
 import RightPanel from '@/components/RightPanel/index.vue'
 import { useResizeHandler } from './mixin/ResizeHandler'
 import { useStore } from 'vuex'
@@ -12,6 +18,7 @@ const sidebar = computed(() => store.state.app.sidebar)
 const device = computed(() => store.state.app.device)
 const fixedHeader = computed(() => store.state.settings.fixedHeader)
 const showSettings = computed(() => store.state.settings.showSettings)
+const needTagsView = computed(() => store.state.settings.tagsView)
 
 const classObj = computed(() => {
   return {
@@ -35,9 +42,10 @@ const handleClickOutside = () => {
       @click="handleClickOutside"
     />
     <Sidebar class="sidebar-container" />
-    <div class="main-container">
+    <div :class="{ hasTagsView: needTagsView }" class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar />
+        <tags-view v-if="needTagsView" />
       </div>
       <app-main />
     </div>

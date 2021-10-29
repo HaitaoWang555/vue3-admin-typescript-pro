@@ -7,7 +7,7 @@ import componentsPage from './modules/components-page'
 import errorRouter from './modules/error-page'
 import nestedRouter from './modules/nested'
 
-const constantRoutes: RouteRecordRaw[] = [
+export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Layout,
@@ -16,7 +16,10 @@ const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import('@/views/dashboard/index.vue'),
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'
+          ),
         meta: { title: 'Dashboard', icon: 'dashboard' },
       },
     ],
@@ -32,13 +35,15 @@ const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/table/index.vue'),
+        component: () =>
+          import(/* webpackChunkName: "example" */ '@/views/table/index.vue'),
         meta: { title: 'Table', icon: 'table' },
       },
       {
         path: 'tree',
         name: 'Tree',
-        component: () => import('@/views/tree/index.vue'),
+        component: () =>
+          import(/* webpackChunkName: "example" */ '@/views/tree/index.vue'),
         meta: { title: 'Tree', icon: 'tree' },
       },
     ],
@@ -51,7 +56,8 @@ const constantRoutes: RouteRecordRaw[] = [
       {
         path: 'index',
         name: 'Form',
-        component: () => import('@/views/form/index.vue'),
+        component: () =>
+          import(/* webpackChunkName: "form" */ '@/views/form/index.vue'),
         meta: { title: 'Form', icon: 'form' },
       },
     ],
@@ -98,6 +104,12 @@ const router = createRouter({
   history,
   routes: constantRoutes,
 })
+
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = []
 
 export default router
 

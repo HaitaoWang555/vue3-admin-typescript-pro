@@ -25,7 +25,10 @@ const componentsRouter: RouteRecordRaw = {
     {
       path: 'tailwind',
       name: 'Tailwind',
-      component: () => import('@/views/tailwind/index.vue'),
+      component: () =>
+        import(
+          /* webpackChunkName: "components" */ '@/views/tailwind/index.vue'
+        ),
       meta: { title: 'tailwind' },
     },
   ],

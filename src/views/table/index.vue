@@ -77,7 +77,7 @@ fetchData()
       >
         <template #default="scope">
           <i class="el-icon-time" />
-          <span>{{ scope.row.displayTime }}</span>
+          <span>{{ scope.row.display_time }}</span>
         </template>
       </el-table-column>
     </el-table>

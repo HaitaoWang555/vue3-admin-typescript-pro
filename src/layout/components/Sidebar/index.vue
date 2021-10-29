@@ -2,7 +2,7 @@
 import { useStore } from 'vuex'
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const store = useStore()
@@ -21,11 +21,6 @@ const activeMenu = computed<string>((): string => {
   return path
 })
 const showLogo = computed(() => store.state.settings.sidebarLogo)
-const variables = ref({
-  menuBg: '#304156',
-  menuText: '#bfcbd9',
-  menuActiveText: '#409eff',
-})
 const isCollapse = computed(() => !sidebar.value.opened)
 </script>
 
@@ -36,10 +31,10 @@ const isCollapse = computed(() => !sidebar.value.opened)
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
+        :background-color="$style.menubg"
+        :text-color="$style.menutext"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
+        :active-text-color="$style.menuactivetext"
         :collapse-transition="false"
         mode="vertical"
       >
@@ -53,3 +48,6 @@ const isCollapse = computed(() => !sidebar.value.opened)
     </el-scrollbar>
   </div>
 </template>
+<style lang="scss" module>
+@import '@/styles/variables.scss';
+</style>
