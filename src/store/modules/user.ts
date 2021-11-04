@@ -2,6 +2,7 @@ import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
 import { Commit } from 'vuex'
+import type { LoginParams } from '@/types/api'
 
 export interface IUser {
   token: string
@@ -38,7 +39,7 @@ const actions = {
   // user login
   login(
     { commit }: { commit: Commit },
-    userInfo: API.LoginParams
+    userInfo: LoginParams
   ): Promise<unknown> {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {

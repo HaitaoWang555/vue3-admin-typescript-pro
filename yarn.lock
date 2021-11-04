@@ -9362,6 +9362,11 @@ sort-keys@^1.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+sortablejs@1.14.0:
+  version "1.14.0"
+  resolved "https://registry.nlark.com/sortablejs/download/sortablejs-1.14.0.tgz#6d2e17ccbdb25f464734df621d4f35d4ab35b3d8"
+  integrity sha1-bS4XzL2yX0ZHNN9iHU811Ks1s9g=
+
 source-list-map@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/source-list-map/download/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
@@ -10406,10 +10411,10 @@ unpipe@1.0.0, unpipe@~1.0.0:
   resolved "https://registry.nlark.com/unpipe/download/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
-unplugin-vue-components@^0.16.0:
-  version "0.16.0"
-  resolved "https://registry.npmmirror.com/unplugin-vue-components/download/unplugin-vue-components-0.16.0.tgz#15a5d5d03ad658ae0202523811ec76150776569d"
-  integrity sha1-FaXV0DrWWK4CAlI4Eex2FQd2Vp0=
+unplugin-vue-components@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.npmmirror.com/unplugin-vue-components/download/unplugin-vue-components-0.17.0.tgz#fdfe4e8c84ed75e2c26f998919ed9c92db9ed6db"
+  integrity sha1-/f5OjITtdeLCb5mJGe2cktue1ts=
   dependencies:
     "@antfu/utils" "^0.3.0"
     "@rollup/pluginutils" "^4.1.1"
@@ -10694,6 +10699,13 @@ vue@3.2.20:
     "@vue/runtime-dom" "3.2.20"
     "@vue/server-renderer" "3.2.20"
     "@vue/shared" "3.2.20"
+
+vuedraggable@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.nlark.com/vuedraggable/download/vuedraggable-4.1.0.tgz?cache=0&sync_timestamp=1629672362084&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvuedraggable%2Fdownload%2Fvuedraggable-4.1.0.tgz#edece68adb8a4d9e06accff9dfc9040e66852270"
+  integrity sha1-7ezmituKTZ4GrM/538kEDmaFInA=
+  dependencies:
+    sortablejs "1.14.0"
 
 vuex@^4.0.2:
   version "4.0.2"

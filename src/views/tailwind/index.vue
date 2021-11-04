@@ -56,9 +56,9 @@
                   </span>
                   <p class="ml-2">
                     Customizing your
-                    <code class="text-sm font-bold text-gray-900"
-                      >windi.config.ts</code
-                    >
+                    <code class="text-sm font-bold text-gray-900">
+                      windi.config.ts
+                    </code>
                     file
                   </p>
                 </li>

@@ -93,12 +93,9 @@ watchEffect(() => {
         <slot v-if="$slots && $slots.footer" name="footer"></slot>
         <span v-else class="dialog-footer">
           <el-button @click="handleClose">关 闭</el-button>
-          <el-button
-            :loading="confirmLoading"
-            type="primary"
-            @click="handleOk"
-            >{{ confirmText }}</el-button
-          >
+          <el-button :loading="confirmLoading" type="primary" @click="handleOk">
+            {{ confirmText }}
+          </el-button>
         </span>
       </template>
     </el-dialog>

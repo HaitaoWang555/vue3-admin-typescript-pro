@@ -1,7 +1,6 @@
 export default function (el: HTMLElement): void {
   const dialogHeaderEl = el.querySelector('.el-dialog__header') as HTMLElement
   const dragDom = el
-  console.log(dragDom.style.cssText)
   dialogHeaderEl.style.cssText += ';cursor:move;'
   dragDom.style.cssText += ';top:0px;'
 

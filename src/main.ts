@@ -1,6 +1,6 @@
 import { createApp, App } from 'vue'
 import ELApp from './App.vue'
-import { loadComponents, loadPlugins } from '@/core/use'
+import { loadComponents, loadPlugins, loadFilters } from '@/core/use'
 import 'windi.css'
 import './styles/index.scss'
 // vue router
@@ -30,6 +30,7 @@ const app: App = createApp(ELApp)
 
 loadComponents(app)
 loadPlugins(app)
+loadFilters(app)
 
 // element-plus config
 app.config.globalProperties.$ELEMENT = { size: 'small', zIndex: 3000 }

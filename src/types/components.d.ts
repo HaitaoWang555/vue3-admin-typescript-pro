@@ -1,5 +1,13 @@
 // components.d.ts
-import { THamburger, TSvgIcon, TProDialog } from '@/components/type'
+import type {
+  THamburger,
+  TSvgIcon,
+  TProDialog,
+  TProSearchForm,
+  TProForm,
+  TProTable,
+} from '@/components/type'
+import type { FiltersType } from '@/core/use'
 declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -8,6 +16,12 @@ declare module 'vue' {
     SvgIcon: typeof TSvgIcon
     Hamburger: typeof THamburger
     ProDialog: typeof TProDialog
+    ProSearchForm: typeof TProSearchForm
+    ProForm: typeof TProForm
+    ProTable: typeof TProTable
+  }
+  export interface ComponentCustomProperties {
+    $filters: FiltersType
   }
 }
 export {}

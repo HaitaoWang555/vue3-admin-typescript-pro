@@ -6,6 +6,7 @@ import Layout from '@/layout/index.vue'
 import componentsPage from './modules/components-page'
 import errorRouter from './modules/error-page'
 import nestedRouter from './modules/nested'
+import exampleRouter from './modules/example'
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
@@ -25,43 +26,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     ],
   },
 
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () =>
-          import(/* webpackChunkName: "example" */ '@/views/table/index.vue'),
-        meta: { title: 'Table', icon: 'table' },
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () =>
-          import(/* webpackChunkName: "example" */ '@/views/tree/index.vue'),
-        meta: { title: 'Tree', icon: 'tree' },
-      },
-    ],
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () =>
-          import(/* webpackChunkName: "form" */ '@/views/form/index.vue'),
-        meta: { title: 'Form', icon: 'form' },
-      },
-    ],
-  },
+  exampleRouter,
   componentsPage,
   errorRouter,
   nestedRouter,

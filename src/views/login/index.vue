@@ -132,12 +132,13 @@ const handleLogin = () => {
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click="handleLogin"
-        >Login</el-button
       >
+        Login
+      </el-button>
 
       <div class="tips">
         <span style="margin-right: 20px">username: admin</span>
-        <span> password: any</span>
+        <span>password: any</span>
       </div>
     </el-form>
   </div>

@@ -64,9 +64,9 @@ fetchData()
         :align="'center'"
       >
         <template #default="scope">
-          <el-tag :type="statusFilter(scope.row.status)">{{
-            scope.row.status
-          }}</el-tag>
+          <el-tag :type="statusFilter(scope.row.status)">
+            {{ scope.row.status }}
+          </el-tag>
         </template>
       </el-table-column>
       <el-table-column

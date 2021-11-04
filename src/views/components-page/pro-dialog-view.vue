@@ -35,8 +35,9 @@ function handleOk() {
       style="display: block; margin: 20px auto"
       type="primary"
       @click="visible = true"
-      >打开Dialog</el-button
     >
+      打开Dialog
+    </el-button>
     <ProDialog
       v-model:value="visible1"
       title="title"
@@ -54,7 +55,8 @@ function handleOk() {
       style="display: block; margin: 20px auto"
       type="primary"
       @click="visible1 = true"
-      >打开全屏Dialog</el-button
     >
+      打开全屏Dialog
+    </el-button>
   </div>
 </template>
