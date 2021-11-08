@@ -1,9 +1,9 @@
 <script setup lang="ts">
 /* eslint-disable vue/no-mutating-props */
-import { onBeforeUnmount, ref, watch, Ref } from 'vue'
+import { onBeforeUnmount, ref, watch, nextTick, Ref } from 'vue'
 import type { ProItem, optionType } from '@/components/type'
 import { FormRulesMap } from 'element-plus/lib/components/form/src/form.type'
-import SendCode from '@/components/sendCode/index.vue'
+import SendCode from '@/components/SendCode/index.vue'
 
 const prop = defineProps({
   formParam: {
@@ -110,7 +110,9 @@ function linkageForm() {
 
 function resetFormParam() {
   Object.assign(prop.formParam, originalFormParams)
-  ProForm.value.resetFields()
+  nextTick().then(() => {
+    ProForm.value.clearValidate()
+  })
 }
 function handleSubmit() {
   return new Promise((resolve, reject) => {

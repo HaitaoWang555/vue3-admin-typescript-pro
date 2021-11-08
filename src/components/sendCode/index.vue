@@ -32,7 +32,7 @@ function sendCode() {
   sendCodes.code = 1
   sendSms(attrs.params)
     .then((res) => {
-      ElMessage({ message: res.data.message, type: 'success', duration: 0 })
+      ElMessage({ message: res.data.message, type: 'success' })
       sendCodes.code = 2
       resetText()
     })

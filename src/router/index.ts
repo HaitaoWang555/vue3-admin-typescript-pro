@@ -10,6 +10,17 @@ import exampleRouter from './modules/example'
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
+    path: '/redirect',
+    component: Layout,
+    meta: { hidden: true },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/components/Redirect/index.vue'),
+      },
+    ],
+  },
+  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',

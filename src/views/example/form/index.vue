@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
 import { submit } from '@/api/public'
-import { reactive, ref, toRaw } from 'vue'
+import { reactive, ref } from 'vue'
 import { list } from './columns/list'
 
 const loading = ref(false)
@@ -23,9 +23,6 @@ function handleReset() {
   ProFormRef.value.resetFormParam()
 }
 function onSubmit(callback: (params: string) => void) {
-  const { name } = form
-  console.log(name)
-  console.log(toRaw(form))
   loading.value = true
   submit(form)
     .then((res) => {

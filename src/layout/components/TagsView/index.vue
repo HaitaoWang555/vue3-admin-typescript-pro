@@ -155,6 +155,7 @@ function addTags() {
 }
 function moveToCurrentTag() {
   nextTick().then(() => {
+    if (!refScrollPane.value) return
     const itemRefs = document.querySelectorAll('#tags-view-container a')
     const $containerWidth = refScrollPane.value.$el.offsetWidth
     const $scrollWrapper = refScrollPane.value.wrap
