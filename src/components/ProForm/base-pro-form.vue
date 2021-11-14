@@ -56,6 +56,7 @@ const originalFormParams = JSON.parse(
 function init() {
   for (let index = 0; index < prop.formList.length; index++) {
     const element = prop.formList[index]
+    element.title = element.title || ''
     if (element.isShowFormItem) {
       element.isForm = element.isShowFormItem(prop.formParam)
     }
@@ -98,7 +99,13 @@ function initOption(element: ProItem) {
 function initRules() {
   prop.formList.forEach((i) => {
     if (i.prop) {
-      rules[i.dataIndex] = i.prop
+      const msg = ['date-picker', 'select'].includes(i.inpuType as string)
+        ? '请选择'
+        : '请输入'
+      rules[i.dataIndex] = i.prop.map((item) => {
+        item.message = msg + i.title || item.message
+        return item
+      })
     }
   })
 }
@@ -159,6 +166,7 @@ watch(
 </script>
 
 <template>
+  <!-- eslint-disable vue/no-v-html  -->
   <el-form
     v-if="showForm"
     ref="ProForm"
@@ -196,11 +204,25 @@ watch(
           <template v-if="item.formSlot">
             <slot :name="item.formSlot" :item="item"></slot>
           </template>
-          <el-form-item
-            v-else
-            :prop="item.prop ? item.dataIndex : ''"
-            :label="item.title + ' : '"
-          >
+          <el-form-item v-else :prop="item.prop ? item.dataIndex : ''">
+            <template #label>
+              <span
+                v-if="item.formLabelHtml"
+                class="pro-slot-form-label"
+                v-html="item.formLabelHtml"
+              ></span>
+              <template v-else>
+                {{ item.title }}
+              </template>
+              <el-tooltip
+                v-if="item.formLabelTooltip"
+                :content="item.formLabelTooltip"
+                placement="top"
+              >
+                <i class="el-icon-question" />
+              </el-tooltip>
+              <template v-if="item.title">：</template>
+            </template>
             <el-input
               v-if="item.valueType === 'input'"
               v-model="formParam[item.dataIndex]"
@@ -284,6 +306,9 @@ watch(
                 {{ s.label }}
               </el-radio>
             </el-radio-group>
+            <span v-if="item.formItemHelp" style="color: rgba(0, 0, 0, 0.45)">
+              {{ item.formItemHelp }}
+            </span>
           </el-form-item>
         </el-col>
       </el-row>

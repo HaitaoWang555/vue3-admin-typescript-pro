@@ -2,6 +2,7 @@
 import { withInstall } from 'element-plus/lib/utils/with-install'
 
 import Hamburger from './Hamburger/base-hamburger.vue'
+import PageContainer from './PageContainer/base-page-container.vue'
 import SvgIcon from './SvgIcon/base-svg-icon.vue'
 import ProDialog from './ProDialog/base-pro-dialog.vue'
 import ProSearchForm from './ProSearchForm/base-pro-search-form.vue'
@@ -38,6 +39,9 @@ export type ProItem = {
   xl?: number
   slot?: string
   formSpan?: number
+  formLabelHtml?: string
+  formLabelTooltip?: string
+  formItemHelp?: string
   formXs?: number
   formSm?: number
   formMd?: number
@@ -66,6 +70,7 @@ export type ProItem = {
   isShowFormItem?: (params: Record<string, any>) => boolean
 }
 
+export const TPageHeader = withInstall(PageContainer)
 export const THamburger = withInstall(Hamburger)
 export const TSvgIcon = withInstall(SvgIcon)
 export const TProDialog = withInstall(ProDialog)

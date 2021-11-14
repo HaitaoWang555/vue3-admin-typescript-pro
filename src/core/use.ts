@@ -9,6 +9,7 @@ import {
 
 // use components
 import SvgIcon from '@/components/SvgIcon/base-svg-icon.vue' // svg component
+import PageContainer from '@/components/PageContainer/base-page-container.vue' // svg component
 import Hamburger from '@/components/Hamburger/base-hamburger.vue' // Hamburger component
 import ProDialog from '@/components/ProDialog/base-pro-dialog.vue' // ProDialog component
 import ProSearchForm from '@/components/ProSearchForm/base-pro-search-form.vue'
@@ -37,6 +38,7 @@ export const loadPlugins = (app: App): void => {
 }
 
 export const loadComponents = (app: App): void => {
+  app.component('PageContainer', PageContainer)
   app.component('SvgIcon', SvgIcon)
   app.component('Hamburger', Hamburger)
   app.component('ProDialog', ProDialog)

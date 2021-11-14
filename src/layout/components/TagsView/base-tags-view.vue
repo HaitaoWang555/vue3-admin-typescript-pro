@@ -233,7 +233,7 @@ watchEffect(() => {
         class="tags-view-item"
         @contextmenu.prevent="openMenu(tag, $event)"
       >
-        {{ tag.name }}
+        {{ tag.meta.title }}
         <span
           v-if="!isAffix(tag)"
           class="el-icon-close"

@@ -2,6 +2,7 @@
 import type {
   THamburger,
   TSvgIcon,
+  TPageHeader,
   TProDialog,
   TProSearchForm,
   TProForm,
@@ -14,6 +15,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     component: (props: { is: Comment }) => void // https://github.com/johnsoncodehk/volar/issues/482
     SvgIcon: typeof TSvgIcon
+    PageContainer: typeof TPageHeader
     Hamburger: typeof THamburger
     ProDialog: typeof TProDialog
     ProSearchForm: typeof TProSearchForm

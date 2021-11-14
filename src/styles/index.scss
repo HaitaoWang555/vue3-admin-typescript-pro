@@ -146,6 +146,14 @@ div:focus {
     }
   }
 }
+
+.pro-slot-form-label {
+  .optional {
+    color: rgba(0, 0, 0, 0.45);
+    font-style: normal;
+  }
+}
+
 // transition draggable
 .flip-list-move {
   transition: transform 0.5s;
