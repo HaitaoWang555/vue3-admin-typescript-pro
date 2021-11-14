@@ -70,21 +70,19 @@ watchEffect(() => {
 })
 </script>
 <template>
-  <div class="app-container">
-    <el-input
-      v-model="filterText"
-      placeholder="Filter keyword"
-      style="margin-bottom: 30px"
-    />
+  <el-input
+    v-model="filterText"
+    placeholder="Filter keyword"
+    style="margin-bottom: 30px"
+  />
 
-    <el-tree
-      ref="tree"
-      :data="data2"
-      node-key="id"
-      :props="defaultProps"
-      :filter-node-method="filterNode"
-      class="filter-tree"
-      default-expand-all
-    />
-  </div>
+  <el-tree
+    ref="tree"
+    :data="data2"
+    node-key="id"
+    :props="defaultProps"
+    :filter-node-method="filterNode"
+    class="filter-tree"
+    default-expand-all
+  />
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch, Ref } from 'vue'
-import Pagination from '@/components/Pagination/index.vue' // secondary package based on el-pagination
+import Pagination from '@/components/Pagination/base-pagination.vue' // secondary package based on el-pagination
 import TableSetting from '@/components/ProTable/table-setting.vue' // TableSetting
 import { useStore } from 'vuex'
 import type { ProItem } from '@/components/type'
@@ -120,6 +120,11 @@ watch(
     }
   }
 )
+
+defineExpose({
+  refresh,
+  list,
+})
 </script>
 <template>
   <div class="pro-table" :class="sticky ? 'sticky' : ''">
@@ -190,3 +195,28 @@ watch(
     />
   </div>
 </template>
+<style lang="scss" scoped>
+.table-operator {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .table-setting {
+    font-size: 22px;
+
+    i {
+      padding: 0 6px;
+      cursor: pointer;
+    }
+
+    i:last-child {
+      padding-right: 0;
+    }
+
+    i:hover {
+      color: #409eff;
+    }
+  }
+}
+</style>

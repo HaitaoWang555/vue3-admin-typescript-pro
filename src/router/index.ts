@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-import Layout from '@/layout/index.vue'
+import Layout from '@/layout/base-layout.vue'
 
 /* Router Modules */
 import componentsPage from './modules/components-page'
@@ -16,7 +16,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path(.*)',
-        component: () => import('@/components/Redirect/index.vue'),
+        component: () => import('@/components/Redirect/base-redirect.vue'),
       },
     ],
   },
@@ -30,7 +30,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: 'Dashboard',
         component: () =>
           import(
-            /* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'
+            /* webpackChunkName: "dashboard" */ '@/views/dashboard/base-dashboard.vue'
           ),
         meta: { title: 'Dashboard', icon: 'dashboard' },
       },
@@ -49,7 +49,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         path: 'index',
         name: 'IconsViews',
         component: () =>
-          import(/* webpackChunkName: "icon" */ '@/views/icons/index.vue'),
+          import(/* webpackChunkName: "icon" */ '@/views/icons/base-icons.vue'),
         meta: { title: 'icons', icon: 'icon' },
       },
     ],
@@ -69,7 +69,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/login',
     component: () =>
-      import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
+      import(/* webpackChunkName: "login" */ '@/views/login/base-login.vue'),
     meta: { hidden: true },
   },
   { path: '/:pathMatch(.*)*', redirect: '/error/404', meta: { hidden: true } },

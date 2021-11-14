@@ -21,42 +21,40 @@ function handleOk() {
 </script>
 
 <template>
-  <div class="app-container">
-    <ProDialog
-      v-model:value="visible"
-      title="title"
-      :confirm-loading="loading"
-      @cancle="handleClose"
-      @ok="handleOk"
-    >
-      封装的Dialog
-    </ProDialog>
-    <el-button
-      style="display: block; margin: 20px auto"
-      type="primary"
-      @click="visible = true"
-    >
-      打开Dialog
-    </el-button>
-    <ProDialog
-      v-model:value="visible1"
-      title="title"
-      fullscreen
-      :confirm-loading="loading"
-      :confirm-text="'(≧∇≦)ﾉ'"
-      @cancle="handleClose"
-      @ok="handleOk"
-    >
-      <div v-for="index in 40" :key="index" style="margin: 20px auto">
-        全屏的Dialog {{ index }}
-      </div>
-    </ProDialog>
-    <el-button
-      style="display: block; margin: 20px auto"
-      type="primary"
-      @click="visible1 = true"
-    >
-      打开全屏Dialog
-    </el-button>
-  </div>
+  <ProDialog
+    v-model:value="visible"
+    title="title"
+    :confirm-loading="loading"
+    @cancle="handleClose"
+    @ok="handleOk"
+  >
+    封装的Dialog
+  </ProDialog>
+  <el-button
+    style="display: block; margin: 20px auto"
+    type="primary"
+    @click="visible = true"
+  >
+    打开Dialog
+  </el-button>
+  <ProDialog
+    v-model:value="visible1"
+    title="title"
+    fullscreen
+    :confirm-loading="loading"
+    :confirm-text="'(≧∇≦)ﾉ'"
+    @cancle="handleClose"
+    @ok="handleOk"
+  >
+    <div v-for="index in 40" :key="index" style="margin: 20px auto">
+      全屏的Dialog {{ index }}
+    </div>
+  </ProDialog>
+  <el-button
+    style="display: block; margin: 20px auto"
+    type="primary"
+    @click="visible1 = true"
+  >
+    打开全屏Dialog
+  </el-button>
 </template>

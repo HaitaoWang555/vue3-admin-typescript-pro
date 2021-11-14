@@ -56,9 +56,12 @@ function changeFullscreen() {
 watch(
   () => attrs.fullscreen,
   () => {
-    if (attrs.fullscreen || attrs.fullscreen === '') isFullscreen.value = true
-  },
-  { immediate: true }
+    if (attrs.fullscreen || attrs.fullscreen === '') {
+      isFullscreen.value = true
+    } else {
+      isFullscreen.value = false
+    }
+  }
 )
 
 watchEffect(() => {

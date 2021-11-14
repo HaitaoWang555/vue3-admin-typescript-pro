@@ -106,6 +106,7 @@ init()
             <el-date-picker
               v-else-if="item.valueType === 'date-picker'"
               v-model="queryParam[item.dataIndex]"
+              v-bind="item.attrs"
               :type="item.pickerType"
               style="width: 100%"
               :format="item.pickerFormat"

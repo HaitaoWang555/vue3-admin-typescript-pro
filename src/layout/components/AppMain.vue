@@ -1,7 +1,9 @@
 <template>
   <section class="app-main">
     <router-view v-slot="{ Component }">
-      <component :is="Component" />
+      <div class="app-container">
+        <component :is="Component" />
+      </div>
     </router-view>
   </section>
 </template>

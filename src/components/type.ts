@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { withInstall } from 'element-plus/lib/utils/with-install'
 
-import Hamburger from './Hamburger/index.vue'
-import SvgIcon from './SvgIcon/index.vue'
-import ProDialog from './ProDialog/index.vue'
-import ProSearchForm from './ProSearchForm/index.vue'
-import ProForm from './ProForm/index.vue'
-import ProTable from './ProTable/index.vue'
+import Hamburger from './Hamburger/base-hamburger.vue'
+import SvgIcon from './SvgIcon/base-svg-icon.vue'
+import ProDialog from './ProDialog/base-pro-dialog.vue'
+import ProSearchForm from './ProSearchForm/base-pro-search-form.vue'
+import ProForm from './ProForm/base-pro-form.vue'
+import ProTable from './ProTable/base-pro-table.vue'
 import { IDatePickerType } from 'element-plus/lib/components/date-picker/src/date-picker.type'
 import { FormItemRule } from 'element-plus/lib/components/form/src/form.type'
 import type { ResponseBodyType } from '@/types/api'
@@ -28,6 +28,7 @@ export type ProItem = {
   optionskey?: { label: string; value: string }
   option?: Array<optionType>
   defaultOption?: Array<optionType>
+  defaultValue?: any
   row?: number
   span?: number
   xs?: number
@@ -45,9 +46,10 @@ export type ProItem = {
   formSlot?: string
   prop?: FormItemRule[]
   attrs?: Record<string, any>
-  title: string
+  title?: string
   placeholder?: string
   inpuType?: string
+  step?: number
   multiple?: boolean
   pickerType?: IDatePickerType
   pickerFormat?: string

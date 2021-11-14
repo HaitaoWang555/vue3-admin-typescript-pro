@@ -37,20 +37,18 @@ function onSubmit(callback: (params: string) => void) {
 </script>
 
 <template>
-  <div class="app-container">
-    <ProForm
-      ref="ProFormRef"
-      :form-param="form"
-      :form-list="formList"
-      :layout="{ formWidth: '560px', labelWidth: '150px' }"
-      @proSubmit="onSubmit"
-    >
-      <template #footerBtn>
-        <el-button :loading="loading" type="primary" @click="handleOk">
-          提交
-        </el-button>
-        <el-button @click="handleReset">重置</el-button>
-      </template>
-    </ProForm>
-  </div>
+  <ProForm
+    ref="ProFormRef"
+    :form-param="form"
+    :form-list="formList"
+    :layout="{ formWidth: '560px', labelWidth: '150px' }"
+    @proSubmit="onSubmit"
+  >
+    <template #footerBtn>
+      <el-button :loading="loading" type="primary" @click="handleOk">
+        提交
+      </el-button>
+      <el-button @click="handleReset">重置</el-button>
+    </template>
+  </ProForm>
 </template>

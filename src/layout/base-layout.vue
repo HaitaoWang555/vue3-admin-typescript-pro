@@ -7,7 +7,7 @@ import {
   Settings,
   TagsView,
 } from './components/index'
-import RightPanel from '@/components/RightPanel/index.vue'
+import RightPanel from '@/components/RightPanel/base-right-panel.vue'
 import { useResizeHandler } from './mixin/ResizeHandler'
 import { useStore } from 'vuex'
 

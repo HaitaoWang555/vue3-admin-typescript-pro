@@ -9,7 +9,7 @@ import router from '@/router'
 import store from '@/store'
 
 import '@/permission' // global css
-
+import * as directive from '@/directive' // global directive
 // icon
 import(/* webpackChunkName: "icon" */ '@/icons/index')
 
@@ -31,6 +31,12 @@ const app: App = createApp(ELApp)
 loadComponents(app)
 loadPlugins(app)
 loadFilters(app)
+
+// register global directive
+Object.keys(directive).forEach((key) => {
+  // @ts-ignore
+  directive[key].install(app)
+})
 
 // element-plus config
 app.config.globalProperties.$ELEMENT = { size: 'small', zIndex: 3000 }

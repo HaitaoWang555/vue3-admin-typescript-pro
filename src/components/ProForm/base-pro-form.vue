@@ -3,7 +3,7 @@
 import { onBeforeUnmount, ref, watch, nextTick, Ref } from 'vue'
 import type { ProItem, optionType } from '@/components/type'
 import { FormRulesMap } from 'element-plus/lib/components/form/src/form.type'
-import SendCode from '@/components/SendCode/index.vue'
+import SendCode from '@/components/SendCode/base-send-code.vue'
 
 const prop = defineProps({
   formParam: {
@@ -37,6 +37,7 @@ const emit = defineEmits<{
 
 defineExpose({
   handleSubmit,
+  resetFormParam,
 })
 
 const showForm = ref(false)
@@ -44,7 +45,13 @@ const rules: FormRulesMap = {}
 const formRows: Ref<Array<Array<ProItem>>> = ref([])
 
 const ProForm = ref()
-const originalFormParams = JSON.parse(JSON.stringify(prop.formParam))
+const tempForm: Record<string, unknown> = {}
+prop.formList.forEach((i) => {
+  tempForm[i.dataIndex] = i.defaultValue || ''
+})
+const originalFormParams = JSON.parse(
+  JSON.stringify(Object.assign(tempForm, prop.formParam))
+)
 
 function init() {
   for (let index = 0; index < prop.formList.length; index++) {
@@ -80,8 +87,8 @@ function initOption(element: ProItem) {
       if (!res) return
       const arr = res.data.data.map((i) => {
         const obj = {} as optionType
-        obj.label = i[element.optionskey ? element.optionskey.label : '']
-        obj.value = i[element.optionskey ? element.optionskey.value : '']
+        obj.label = i[element.optionskey ? element.optionskey.label : 'label']
+        obj.value = i[element.optionskey ? element.optionskey.value : 'value']
         return obj
       })
       element.defaultOption = element.defaultOption ? element.defaultOption : []
@@ -111,7 +118,9 @@ function linkageForm() {
 function resetFormParam() {
   Object.assign(prop.formParam, originalFormParams)
   nextTick().then(() => {
-    ProForm.value.clearValidate()
+    if (ProForm.value) {
+      ProForm.value.clearValidate()
+    }
   })
 }
 function handleSubmit() {

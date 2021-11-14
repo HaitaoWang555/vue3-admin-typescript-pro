@@ -8,12 +8,12 @@ import {
 } from 'element-plus'
 
 // use components
-import SvgIcon from '@/components/SvgIcon/index.vue' // svg component
-import Hamburger from '@/components/Hamburger/index.vue' // Hamburger component
-import ProDialog from '@/components/ProDialog/index.vue' // ProDialog component
-import ProSearchForm from '@/components/ProSearchForm/index.vue'
-import ProForm from '@/components/ProForm/index.vue'
-import ProTable from '@/components/ProTable/index.vue'
+import SvgIcon from '@/components/SvgIcon/base-svg-icon.vue' // svg component
+import Hamburger from '@/components/Hamburger/base-hamburger.vue' // Hamburger component
+import ProDialog from '@/components/ProDialog/base-pro-dialog.vue' // ProDialog component
+import ProSearchForm from '@/components/ProSearchForm/base-pro-search-form.vue'
+import ProForm from '@/components/ProForm/base-pro-form.vue'
+import ProTable from '@/components/ProTable/base-pro-table.vue'
 import { App } from 'vue'
 import { parseTime } from '@/utils'
 import 'element-plus/theme-chalk/base.css'

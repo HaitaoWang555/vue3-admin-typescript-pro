@@ -20,7 +20,7 @@ const multipleSelection: Ref<ArticleItem[]> = ref([])
 // Form
 const dialogTitle = ref('')
 const dialogVisible = ref(false)
-const ProForm = ref()
+const ProFormRef = ref()
 const confirmLoading = ref(false)
 const defaultFormParams = {
   id: undefined,
@@ -129,7 +129,7 @@ function updateSuccess() {
   dialogVisible.value = false
 }
 function handleDialogOk() {
-  ProForm.value.handleSubmit()
+  ProFormRef.value.handleSubmit()
 }
 function proSubmit() {
   confirmLoading.value = true
@@ -149,132 +149,105 @@ function formCB() {
 </script>
 
 <template>
-  <div class="app-container">
-    <ProTable
-      ref="proTable"
-      :border="true"
-      show-selection
-      :columns="columns"
-      :data="loadData"
-      :query-param="queryParam"
-      :default-sort="{ prop: 'id', order: 'ascending' }"
-      @sort-change="sortChange"
-      @selection-change="handleSelectionChange"
-    >
-      <template #btn>
-        <el-button type="primary" icon="el-icon-plus" @click="handleCreate">
-          Add
+  <ProTable
+    ref="proTable"
+    :border="true"
+    show-selection
+    :columns="columns"
+    :data="loadData"
+    :query-param="queryParam"
+    :default-sort="{ prop: 'id', order: 'ascending' }"
+    @sort-change="sortChange"
+    @selection-change="handleSelectionChange"
+  >
+    <template #btn>
+      <el-button type="primary" icon="el-icon-plus" @click="handleCreate">
+        Add
+      </el-button>
+      <el-button
+        type="success"
+        :disabled="multipleSelection.length === 0"
+        @click="handleBatchModifyStatus('published')"
+      >
+        Publish
+      </el-button>
+      <el-button
+        :disabled="multipleSelection.length === 0"
+        @click="handleBatchModifyStatus('draft')"
+      >
+        Draft
+      </el-button>
+    </template>
+
+    <template #title="slotProps">
+      <span style="padding-right: 15px" class="link-type">
+        {{ slotProps.row.title }}
+      </span>
+      <el-tag>{{ dict('typeFilter', slotProps.row.type) }}</el-tag>
+    </template>
+    <template #importance="slotProps">
+      <el-rate :model-value="slotProps.row.importance" disabled></el-rate>
+    </template>
+    <template #status="slotProps">
+      <el-tag :type="(dict('statusMap', slotProps.row.status) as any)">
+        {{ slotProps.row.status }}
+      </el-tag>
+    </template>
+    <template #actions="slotProps">
+      <span class="fixed-width">
+        <el-button type="primary" @click="handleUpdate(slotProps.row)">
+          Edit
         </el-button>
         <el-button
+          v-if="slotProps.row.status != 'published'"
+          size="mini"
           type="success"
-          :disabled="multipleSelection.length === 0"
-          @click="handleBatchModifyStatus('published')"
+          @click="handleModifyStatus(slotProps.row, 'published')"
         >
           Publish
         </el-button>
         <el-button
-          :disabled="multipleSelection.length === 0"
-          @click="handleBatchModifyStatus('draft')"
+          v-if="slotProps.row.status != 'draft'"
+          size="mini"
+          @click="handleModifyStatus(slotProps.row, 'draft')"
         >
           Draft
         </el-button>
-      </template>
-
-      <template #title="slotProps">
-        <span style="padding-right: 15px" class="link-type">
-          {{ slotProps.row.title }}
-        </span>
-        <el-tag>{{ dict('typeFilter', slotProps.row.type) }}</el-tag>
-      </template>
-      <template #importance="slotProps">
-        <el-rate :model-value="slotProps.row.importance" disabled></el-rate>
-      </template>
-      <template #status="slotProps">
-        <el-tag :type="(dict('statusMap', slotProps.row.status) as any)">
-          {{ slotProps.row.status }}
-        </el-tag>
-      </template>
-      <template #actions="slotProps">
-        <span class="fixed-width">
-          <el-button type="primary" @click="handleUpdate(slotProps.row)">
-            Edit
-          </el-button>
-          <el-button
-            v-if="slotProps.row.status != 'published'"
-            size="mini"
-            type="success"
-            @click="handleModifyStatus(slotProps.row, 'published')"
-          >
-            Publish
-          </el-button>
-          <el-button
-            v-if="slotProps.row.status != 'draft'"
-            size="mini"
-            @click="handleModifyStatus(slotProps.row, 'draft')"
-          >
-            Draft
-          </el-button>
-          <el-button
-            v-if="slotProps.row.status != 'deleted'"
-            size="mini"
-            type="danger"
-            @click="handleDelete(slotProps.row, slotProps.index)"
-          >
-            Delete
-          </el-button>
-        </span>
-      </template>
-    </ProTable>
-    <ProDialog
-      v-model:value="dialogVisible"
-      :title="dialogTitle"
-      width="50%"
-      :confirm-loading="confirmLoading"
-      @ok="handleDialogOk"
+        <el-button
+          v-if="slotProps.row.status != 'deleted'"
+          size="mini"
+          type="danger"
+          @click="handleDelete(slotProps.row, slotProps.index)"
+        >
+          Delete
+        </el-button>
+      </span>
+    </template>
+  </ProTable>
+  <ProDialog
+    v-model:value="dialogVisible"
+    :title="dialogTitle"
+    width="50%"
+    :confirm-loading="confirmLoading"
+    @ok="handleDialogOk"
+  >
+    <ProForm
+      ref="ProFormRef"
+      :form-param="form"
+      :form-list="columns"
+      :layout="{ formWidth: '560px', labelWidth: '100px' }"
+      @proSubmit="proSubmit"
     >
-      <ProForm
-        ref="ProForm"
-        :form-param="form"
-        :form-list="columns"
-        :layout="{ formWidth: '560px', labelWidth: '100px' }"
-        @proSubmit="proSubmit"
-      >
-        <template #importance>
-          <el-form-item label="Imp : ">
-            <el-rate
-              v-model="form.importance"
-              :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
-              :max="3"
-              style="margin-top: 8px"
-            />
-          </el-form-item>
-        </template>
-      </ProForm>
-    </ProDialog>
-  </div>
+      <template #importance>
+        <el-form-item label="Imp : ">
+          <el-rate
+            v-model="form.importance"
+            :colors="['#99A9BF', '#F7BA2A', '#FF9900']"
+            :max="3"
+            style="margin-top: 8px"
+          />
+        </el-form-item>
+      </template>
+    </ProForm>
+  </ProDialog>
 </template>
-<style lang="scss">
-.table-operator {
-  margin-bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .table-setting {
-    font-size: 22px;
-
-    i {
-      padding: 0 6px;
-      cursor: pointer;
-    }
-
-    i:last-child {
-      padding-right: 0;
-    }
-
-    i:hover {
-      color: #409eff;
-    }
-  }
-}
-</style>

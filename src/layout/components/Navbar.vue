@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/base-breadcrumb.vue'
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 

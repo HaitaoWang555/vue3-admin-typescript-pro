@@ -102,7 +102,7 @@ const list: ProItem[] = [
     isForm: true,
   },
   {
-    dataIndex: 'check-code',
+    dataIndex: 'checkCode',
     title: 'Verification Code',
     isForm: true,
     valueType: 'check-code',
