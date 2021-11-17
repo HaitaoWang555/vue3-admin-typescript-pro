@@ -1,13 +1,25 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-import Layout from '@/layout/index.vue'
+import Layout from '@/layout/base-layout.vue'
 
 /* Router Modules */
 import componentsPage from './modules/components-page'
 import errorRouter from './modules/error-page'
 import nestedRouter from './modules/nested'
+import exampleRouter from './modules/example'
 
 export const constantRoutes: RouteRecordRaw[] = [
+  {
+    path: '/redirect',
+    component: Layout,
+    meta: { hidden: true },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/components/Redirect/base-redirect.vue'),
+      },
+    ],
+  },
   {
     path: '/',
     component: Layout,
@@ -18,50 +30,14 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: 'Dashboard',
         component: () =>
           import(
-            /* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'
+            /* webpackChunkName: "dashboard" */ '@/views/dashboard/base-dashboard.vue'
           ),
         meta: { title: 'Dashboard', icon: 'dashboard' },
       },
     ],
   },
 
-  {
-    path: '/example',
-    component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () =>
-          import(/* webpackChunkName: "example" */ '@/views/table/index.vue'),
-        meta: { title: 'Table', icon: 'table' },
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () =>
-          import(/* webpackChunkName: "example" */ '@/views/tree/index.vue'),
-        meta: { title: 'Tree', icon: 'tree' },
-      },
-    ],
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () =>
-          import(/* webpackChunkName: "form" */ '@/views/form/index.vue'),
-        meta: { title: 'Form', icon: 'form' },
-      },
-    ],
-  },
+  exampleRouter,
   componentsPage,
   errorRouter,
   nestedRouter,
@@ -73,7 +49,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         path: 'index',
         name: 'IconsViews',
         component: () =>
-          import(/* webpackChunkName: "icon" */ '@/views/icons/index.vue'),
+          import(/* webpackChunkName: "icon" */ '@/views/icons/base-icons.vue'),
         meta: { title: 'icons', icon: 'icon' },
       },
     ],
@@ -93,7 +69,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/login',
     component: () =>
-      import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
+      import(/* webpackChunkName: "login" */ '@/views/login/base-login.vue'),
     meta: { hidden: true },
   },
   { path: '/:pathMatch(.*)*', redirect: '/error/404', meta: { hidden: true } },

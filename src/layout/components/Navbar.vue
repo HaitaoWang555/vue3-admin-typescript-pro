@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useStore } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/base-breadcrumb.vue'
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -38,7 +38,7 @@ const logout = async () => {
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item> Home </el-dropdown-item>
+              <el-dropdown-item>Home</el-dropdown-item>
             </router-link>
             <a
               target="_blank"

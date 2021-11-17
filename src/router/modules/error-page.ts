@@ -1,7 +1,7 @@
 /** When your routing table is too long, you can split it into small modules **/
 import { RouteRecordRaw } from 'vue-router'
 
-import Layout from '@/layout/index.vue'
+import Layout from '@/layout/base-layout.vue'
 
 const errorRouter: RouteRecordRaw = {
   path: '/error',

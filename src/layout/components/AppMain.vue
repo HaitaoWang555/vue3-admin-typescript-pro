@@ -1,7 +1,9 @@
 <template>
   <section class="app-main">
     <router-view v-slot="{ Component }">
-      <component :is="Component" />
+      <div class="app-container">
+        <component :is="Component" />
+      </div>
     </router-view>
   </section>
 </template>
@@ -9,9 +11,10 @@
 <style scoped>
 .app-main {
   /* 50 = navbar  */
-  min-height: calc(100vh - 50px);
+  min-height: 100vh;
   width: 100%;
   position: relative;
+  background-color: #f0f2f5;
 }
 
 .fixed-header + .app-main {
@@ -20,7 +23,7 @@
 
 .hasTagsView .app-main {
   /* 50 = navbar  */
-  min-height: calc(100vh - 84px);
+  min-height: 100vh;
 }
 
 .hasTagsView .fixed-header + .app-main {

@@ -124,7 +124,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'success',
+        message: 'success',
         data: {
           columns: columnList,
           listUrl: '/vue3-admin-pro/online/list',
@@ -167,7 +167,7 @@ module.exports = [
       )
       return {
         code: 20000,
-        msg: 'success',
+        message: 'success',
         data: {
           total: count,
           items: pageList,
@@ -181,7 +181,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'add success',
+        message: 'add success',
       }
     },
   },
@@ -191,7 +191,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'edit success',
+        message: 'edit success',
       }
     },
   },
@@ -201,7 +201,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'delete success',
+        message: 'delete success',
       }
     },
   },

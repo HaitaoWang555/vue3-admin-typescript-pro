@@ -12,6 +12,7 @@ const port = process.env.port || process.env.npm_config_port || 9527 // dev port
 const isDev = process.env.NODE_ENV === 'development'
 
 const vueConfig = {
+  publicPath: '/vue3-admin-typescript-pro/',
   productionSourceMap: false,
   devServer: {
     port: port,

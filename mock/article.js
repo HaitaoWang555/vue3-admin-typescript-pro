@@ -16,17 +16,16 @@ for (let i = 0; i < count; i++) {
       author: '@first',
       reviewer: '@first',
       title: '@title(5, 10)',
-      content_short: 'mock data',
+      contentShort: 'mock data',
       content: baseContent,
       forecast: '@float(0, 100, 2, 2)',
       importance: '@integer(1, 3)',
       'type|1': ['CN', 'US', 'JP', 'EU'],
       'status|1': ['published', 'draft'],
-      display_time: '@datetime',
-      comment_disabled: true,
+      displayTime: '@datetime',
+      commentDisabled: true,
       pageviews: '@integer(300, 5000)',
-      image_uri: imageUri,
-      platforms: ['a-platform'],
+      imageUri: imageUri,
     })
   )
 }
@@ -111,7 +110,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'success',
+        message: 'success',
         data: 'success',
       }
     },
@@ -123,7 +122,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'success',
+        message: 'success',
         data: 'success',
       }
     },
@@ -135,10 +134,10 @@ module.exports = [
       return {
         code: 20000,
         data: [
-          { key: 'CN', display_name: 'China' },
-          { key: 'US', display_name: 'USA' },
-          { key: 'JP', display_name: 'Japan' },
-          { key: 'EU', display_name: 'Eurozone' },
+          { key: 'CN', displayName: 'China' },
+          { key: 'US', displayName: 'USA' },
+          { key: 'JP', displayName: 'Japan' },
+          { key: 'EU', displayName: 'Eurozone' },
         ],
       }
     },

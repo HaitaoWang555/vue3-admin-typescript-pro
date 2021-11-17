@@ -1,6 +1,6 @@
 import { createApp, App } from 'vue'
 import ELApp from './App.vue'
-import { loadComponents, loadPlugins } from '@/core/use'
+import { loadComponents, loadPlugins, loadFilters } from '@/core/use'
 import 'windi.css'
 import './styles/index.scss'
 // vue router
@@ -9,7 +9,7 @@ import router from '@/router'
 import store from '@/store'
 
 import '@/permission' // global css
-
+import * as directive from '@/directive' // global directive
 // icon
 import(/* webpackChunkName: "icon" */ '@/icons/index')
 
@@ -30,6 +30,13 @@ const app: App = createApp(ELApp)
 
 loadComponents(app)
 loadPlugins(app)
+loadFilters(app)
+
+// register global directive
+Object.keys(directive).forEach((key) => {
+  // @ts-ignore
+  directive[key].install(app)
+})
 
 // element-plus config
 app.config.globalProperties.$ELEMENT = { size: 'small', zIndex: 3000 }

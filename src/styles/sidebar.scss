@@ -76,12 +76,14 @@
     .el-sub-menu__title {
       &:hover {
         background-color: $menuHover !important;
+        color: $menuHoverText !important;
       }
     }
 
     .el-menu-item:hover,
     .el-menu-item:focus {
       background-color: $subMenuBg !important;
+      color: $menuHoverText !important;
     }
 
     .is-active > .el-sub-menu__title {
@@ -95,6 +97,7 @@
 
       &:hover {
         background-color: $subMenuHover !important;
+        color: $menuHoverText !important;
       }
     }
   }

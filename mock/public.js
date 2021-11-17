@@ -9,7 +9,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'success',
+        message: 'success',
         data,
       }
     },
@@ -21,7 +21,7 @@ module.exports = [
     response: () => {
       return {
         code: 20000,
-        msg: 'success',
+        message: 'success',
       }
     },
   },

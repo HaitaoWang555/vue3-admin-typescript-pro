@@ -4,6 +4,7 @@
 @import './element-ui.scss';
 @import './tags-view.scss';
 @import './sidebar.scss';
+@import './editable-cell.scss';
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -89,4 +90,94 @@ div:focus {
 // main-container global css
 .app-container {
   padding: 20px;
+}
+
+.relative-wrap {
+  position: relative;
+
+  .absolute-wrap {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  i.absolute-wrap {
+    padding: 0 6px;
+    cursor: pointer;
+    font-size: 22px;
+  }
+}
+
+.content-screenfull {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 20px !important;
+  background-color: white;
+  z-index: 1005;
+  overflow-y: auto;
+}
+
+// pro table btn
+.table-operator {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .table-setting {
+    font-size: 22px;
+
+    i {
+      padding: 0 6px;
+      cursor: pointer;
+    }
+
+    i:last-child {
+      padding-right: 0;
+    }
+
+    i:hover {
+      color: #409eff;
+    }
+  }
+}
+
+.pro-slot-form-label {
+  .optional {
+    color: rgba(0, 0, 0, 0.45);
+    font-style: normal;
+  }
+}
+
+// transition draggable
+.flip-list-move {
+  transition: transform 0.5s;
+}
+
+.no-move {
+  transition: transform 0s;
+}
+
+.pro-form-has-footer-bar {
+  padding-bottom: 24px;
+
+  .pro-form-footer-bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 6px 24px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    box-shadow: 0 -6px 16px -8px rgb(0 0 0 / 8%), 0 -9px 28px 0 rgb(0 0 0 / 5%), 0 -12px 48px 16px rgb(0 0 0 / 3%);
+  }
 }
